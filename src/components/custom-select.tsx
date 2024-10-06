@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function CustomerSelect(){
+export function CustomSelect(){
     const [selectedOption, setSelectedOption] = useState("ativo");
     const [ isOpen, setIsOpen ] = useState(false);
 

@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { AllCustomerModal } from "./components/all-customer-modal"
-import { CustomerSelect } from "./components/customer-select";
+import { CustomSelect } from "./components/custom-select";
 
 
 export function App() {
@@ -19,7 +19,7 @@ export function App() {
             <label>Email: </label>
             <input type="email" className="border-2 border-black focus:outline-none rounded-md" />
             <div className="flex justify-center">
-              <CustomerSelect />
+              <CustomSelect />
             </div>
           </div>
         </div>
