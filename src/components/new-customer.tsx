@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { api } from "../lib/axios";
 import { CustomSelect } from "./custom-select";
+import { ArrowLeft } from "lucide-react";
 
 interface NewCustomerProps{
   findAllCustomers: () => void;
@@ -27,6 +28,7 @@ export function NewCustomer({
    };
 
    function handleClick(){
+    if(name === "" || email === "") return
     registerCustomer();
     findAllCustomers();
     setOpenRegister(false);
@@ -55,12 +57,20 @@ export function NewCustomer({
             </div>
           </div>
         </div>
+        <div className="flex justify-center gap-5">
+        <button
+          onClick={() => setOpenRegister(false)}
+          className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold rounded-lg border-black border-[3px] px-8 py-3 text-3xl"
+        >
+          <ArrowLeft className="size-8"/>
+        </button>
         <button
         onClick={handleClick}
         className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold rounded-lg border-black border-[3px] px-8 py-3 text-3xl"
       >
         Cadastrar
       </button>
+        </div>
       </>
     )
 };
