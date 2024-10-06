@@ -14,11 +14,13 @@ export function NewCustomer({
 
   const [ name, setName ] = useState("");
   const [ email, setEmail ] = useState("");
+  const [ status, setStatus ] = useState(true);
 
   async function registerCustomer(){
     await api.post(`/customer`, {
       name,
       email,
+      status,
     })
     .then(() => console.log("cadastrado"))
     .catch((err) => console.log(err))
@@ -47,7 +49,9 @@ export function NewCustomer({
               onChange={(e) => setEmail(e.target.value)}
               className="border-2 border-black focus:outline-none rounded-md" />
             <div className="flex justify-center">
-              <CustomSelect />
+              <CustomSelect 
+                setStatus={setStatus}
+              />
             </div>
           </div>
         </div>

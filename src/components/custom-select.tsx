@@ -1,11 +1,18 @@
 import { useState } from "react";
 
-export function CustomSelect(){
+interface CustomSelectProps{
+    setStatus: (e: boolean) => void;
+};
+
+export function CustomSelect({
+    setStatus,
+}: CustomSelectProps){
     const [selectedOption, setSelectedOption] = useState("ativo");
     const [ isOpen, setIsOpen ] = useState(false);
 
     const handleClick = (value: string) => {
         setSelectedOption(value);
+        setStatus((value === "ativo" ? (true) : (false)))
         setIsOpen(false);
     };
 
