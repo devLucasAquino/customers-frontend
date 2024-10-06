@@ -3,11 +3,13 @@ import { api } from "../lib/axios";
 import { CustomSelect } from "./custom-select";
 
 interface NewCustomerProps{
+  findAllCustomers: () => void;
   setOpenRegister: (e: boolean) => void;
 }
 
 export function NewCustomer({
-  setOpenRegister
+  setOpenRegister,
+  findAllCustomers,
 }: NewCustomerProps){
 
   const [ name, setName ] = useState("");
@@ -24,6 +26,7 @@ export function NewCustomer({
 
    function handleClick(){
     registerCustomer();
+    findAllCustomers();
     setOpenRegister(false);
    };
 

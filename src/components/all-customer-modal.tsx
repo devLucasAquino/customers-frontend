@@ -1,42 +1,19 @@
 import { Trash2, User } from "lucide-react"
 import { api } from "../lib/axios"
-import { useEffect, useState } from "react";
-
-interface customer{
-    id: string;
-    name: string;
-    email: string;
-    status: boolean;
-    create_at: Date;
-    updated?: Date;
-};
+import { useEffect } from "react";
+import { customer } from "../App";
 
 interface AllCustomerModalProps{
+  allCustomers: customer[];
+  findAllCustomers: () => void;
   setOpenRegister: (e: boolean) => void;
 }
 
 export function AllCustomerModal({
+  allCustomers,
   setOpenRegister,
+  findAllCustomers,
 }: AllCustomerModalProps){
-
-    const [ allCustomers, setAllCustomers ] = useState<customer[]>([]);
-    
-    async function findAllCustomers(){
-        await api.get(`/customers`)
-        .then((json) => {
-            const data = json.data;
-            if(data !== ""){
-                setAllCustomers(data.map((item: customer) => ({
-                    id: item.id,
-                    name: item.name,
-                    email: item.email,
-                    status: item.status,
-                    created_at: item.create_at,
-                    updated: item.updated,
-                })));
-            };
-        })
-    };
 
     useEffect(() => {
         findAllCustomers();
@@ -53,7 +30,7 @@ export function AllCustomerModal({
       <>
         <div className="h-auto w-1/3 border-2 py-2 bg-white rounded-lg border-gray-800">
         <h2 className="text-center font-medium text-2xl mb-3">Clientes</h2>
-        <div className="flex flex-col gap-2 mx-5">
+        <div className="flex flex-col gap-2 mx-5 max-h-[360px] overflow-y-scroll">
           {allCustomers.length > 0 && (
             allCustomers.map((customer) => (
               <div 
