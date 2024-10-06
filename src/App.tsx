@@ -26,13 +26,16 @@ export function App() {
                       <Trash2 className="text-red-600"/>
                     </button>
                   </div>
-                  <div className="flex flex-col text-lg">
-                    <h2>Nome: <strong>{customer.name.toUpperCase()}</strong></h2>
-                    <h2>Email: <strong>{customer.email}</strong></h2>
-                    <div className="flex justify-end items-center gap-2 text-zinc-600 text-base">
-                      <div className={`size-3 rounded-full ${customer.status === "active" ? ("bg-green-500"): ("bg-red-500")} `}/>
-                      {customer.status === "active" ? 
-                      (<h4>ativo</h4>) : (<h4>desativo</h4>)}
+                  <div className="flex justify-between">
+                    <div className="flex flex-col text-lg">
+                      <h2>Nome: <strong>{customer.name.toUpperCase()}</strong></h2>
+                      <h2>Email: <strong>{customer.email}</strong></h2>
+                    </div>
+                    <div className="flex justify-end items-end">
+                      <div className="flex justify-end items-center gap-2 text-zinc-600 text-base">
+                        <div className={`size-3 rounded-full ${customer.status === "active" ? ("bg-green-500"): ("bg-red-500")} `}/>
+                        {customer.status === "active" ? (<h4>ativo</h4>) : (<h4>desativo</h4>)}
+                      </div>
                     </div>
                   </div>
                 </div>
