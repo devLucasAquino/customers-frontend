@@ -34,7 +34,14 @@ export function AllCustomerModal(){
 
     useEffect(() => {
         findAllCustomers();
-    }, [])
+    }, []);
+
+    async function deleteCustomer(id: string) {
+        await api.delete(`/customer?id=${id}`)
+        .then(() => findAllCustomers())
+        .catch((err) => console.log(err))
+    };
+      
 
     return(
         <div className="h-auto w-1/3 border-2 py-2 bg-white rounded-lg border-gray-800">
@@ -49,7 +56,7 @@ export function AllCustomerModal(){
                 <div className="py-2">
                   <div className="flex justify-between">
                     <User />
-                    <button>
+                    <button onClick={() => deleteCustomer(customer.id)}>
                       <Trash2 className="text-red-600"/>
                     </button>
                   </div>

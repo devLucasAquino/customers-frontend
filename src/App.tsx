@@ -6,7 +6,6 @@ export function App() {
 
  const [ openRegister, setOpenRegister ] = useState(false);
 
-
   return (
     <div className="flex flex-col gap-3 justify-center items-center h-screen">
       {openRegister ? (
